@@ -108,7 +108,13 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-    log(`Server running on http://localhost:${PORT}`);
-});
+
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+        log(`Server running on http://localhost:${PORT}`);
+    });
+}
+

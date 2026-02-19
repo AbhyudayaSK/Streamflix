@@ -1,0 +1,27 @@
+﻿git : To https://gith
+ub.com/AbhyudayaSK/St
+reamflix.git
+At line:1 char:243
++ ... ommit with 
+secured 
+credentials"; git 
+push -u origin main 
+2>&1 | Out-F ...
++                    
+                  ~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (To http   
+ s://gith.../Stre    
+amflix.git:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+ * [new branch]      
+main -> main
+branch 'main' set up to track 'origin/main'.
