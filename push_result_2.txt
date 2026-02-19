@@ -1,0 +1,117 @@
+﻿git : remote: error: 
+GH013: Repository 
+rule violations 
+found for 
+refs/heads/main.     
+   
+At line:1 char:93
++ ... roject files 
+(secrets removed)"; 
+git push -u origin 
+main 2>&1 | Out-F ...
++                    
+                  ~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (remote:   
+  error: ...s/mai    
+n.        :Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+remote: 
+remote: - GITHUB 
+PUSH PROTECTION      
+  
+remote:   ΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇö        
+remote:     Resolve 
+the following 
+violations before 
+pushing again        
+remote: 
+remote:     - Push 
+cannot contain 
+secrets        
+remote: 
+remote:             
+remote:      (?) 
+Learn how to resolve 
+a blocked push       
+ 
+remote:      https://
+docs.github.com/code-
+security/secret-scann
+ing/working-with-secr
+et-scanning-and-push-
+protection/working-wi
+th-push-protection-fr
+om-the-command-line#r
+esolving-a-blocked-pu
+sh        
+remote:             
+remote:             
+remote:       ΓÇöΓÇö 
+Aiven Service 
+Password ΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇö        
+remote:        
+locations:        
+remote:          - 
+commit: 89c595ed4f7b8
+bab4c6a2abe69b3d1da09
+af94a4        
+remote:            
+path: debug_db.js:7  
+      
+remote:          - 
+commit: 89c595ed4f7b8
+bab4c6a2abe69b3d1da09
+af94a4        
+remote:            
+path: 
+server/db.js:10      
+  
+remote:             
+remote:        (?) 
+To push, remove 
+secret from 
+commit(s) or follow 
+this URL to allow 
+the secret.        
+remote:        https:
+//github.com/Abhyuday
+aSK/Streamflix/securi
+ty/secret-scanning/un
+block-secret/39spIZNH
+P9un15I1LqXvKaU52jN  
+      
+remote:             
+remote: 
+remote: 
+To https://github.com
+/AbhyudayaSK/Streamfl
+ix.git
+ ! [remote rejected] 
+main -> main (push 
+declined due to 
+repository rule 
+violations)
+error: failed to 
+push some refs to 'ht
+tps://github.com/Abhy
+udayaSK/Streamflix.gi
+t'

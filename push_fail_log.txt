@@ -1,0 +1,29 @@
+﻿git : remote: 
+Permission to Abhyuda
+yaSK/Streamflix.git 
+denied to 
+AbhyudayaSK.
+At line:1 char:1
++ git push origin 
+main 2>&1 | Out-File 
+-Encoding utf8 
+push_fail_log.txt
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (remote:   
+  Permiss...to Ab    
+hyudayaSK.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+fatal: unable to 
+access 'https://githu
+b.com/AbhyudayaSK/Str
+eamflix.git/': The 
+requested URL 
+returned error: 403

@@ -1,0 +1,6 @@
+Starting server...
+Server running on http://localhost:5000
+Error initializing database: Error: self-signed certificate in certificate chain
+Starting server...
+Server running on http://localhost:5001
+Database initialized: 'users' table ready.
