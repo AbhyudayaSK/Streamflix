@@ -31,9 +31,10 @@ const LoginPage = () => {
                 // Safely handle cases where the error might be an object
                 const data = err.response.data;
                 if (typeof data === 'object' && data !== null) {
-                    const message = data.error || data.message || JSON.stringify(data);
-                    const details = data.details ? ` (Details: ${data.details})` : '';
-                    setError(`${message}${details}`);
+                    let message = data.error || data.message || JSON.stringify(data);
+                    if (typeof message === 'object') message = JSON.stringify(message);
+                    const details = data.details ? ` (Details: ${typeof data.details === 'object' ? JSON.stringify(data.details) : data.details})` : '';
+                    setError(String(`${message}${details}`));
                 } else {
                     setError(String(data) || 'Login failed');
                 }
