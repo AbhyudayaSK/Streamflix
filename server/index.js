@@ -76,7 +76,7 @@ app.post('/api/auth/signup', async (req, res) => {
         console.error("Signup Error:", err);
         res.status(500).json({
             error: "Database error during signup",
-            details: process.env.NODE_ENV === 'development' ? err.message : undefined
+            details: err.message
         });
     }
 });
@@ -110,7 +110,7 @@ app.post('/api/auth/login', async (req, res) => {
         console.error("Login Error:", err);
         res.status(500).json({
             error: "Database error during login",
-            details: process.env.NODE_ENV === 'development' ? err.message : undefined
+            details: err.message
         });
     }
 });
