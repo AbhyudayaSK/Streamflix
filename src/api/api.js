@@ -1,5 +1,5 @@
-const API_KEY = import.meta.env.VITE_API_KEY || "ca44a7c023ad8ba5f267134460b9690f";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://api.themoviedb.org/3";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 /**
  * Validates that the necessary environment variables are set.

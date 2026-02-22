@@ -19,7 +19,11 @@ console.log("Starting server...");
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const SECRET_KEY = process.env.SECRET_KEY || "supersecretkey";
+const SECRET_KEY = process.env.SECRET_KEY;
+
+if (!SECRET_KEY) {
+    console.warn("WARNING: SECRET_KEY environment variable is not set. JWT tokens will not be secure.");
+}
 
 app.use(cors());
 app.use(express.json());
