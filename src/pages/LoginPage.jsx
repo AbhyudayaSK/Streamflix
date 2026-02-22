@@ -28,9 +28,15 @@ const LoginPage = () => {
             if (!err.response) {
                 setError('Network error: Unable to connect to the backend.');
             } else {
-                const serverError = err.response.data?.error || 'Login failed';
-                const serverDetails = err.response.data?.details ? ` (Details: ${err.response.data.details})` : '';
-                setError(`${serverError}${serverDetails}`);
+                // Safely handle cases where the error might be an object
+                const data = err.response.data;
+                if (typeof data === 'object' && data !== null) {
+                    const message = data.error || data.message || JSON.stringify(data);
+                    const details = data.details ? ` (Details: ${data.details})` : '';
+                    setError(`${message}${details}`);
+                } else {
+                    setError(String(data) || 'Login failed');
+                }
             }
         }
     };
