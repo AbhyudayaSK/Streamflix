@@ -3,9 +3,7 @@ import cors from 'cors';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import db from './db.js'; // Ensure .js extension is present
-import dotenv from 'dotenv';
 
-dotenv.config();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 
