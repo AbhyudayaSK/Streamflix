@@ -119,10 +119,9 @@ app.post('/api/auth/login', async (req, res) => {
 // Debug environment (keys only for security)
 app.get('/api/debug-env', (req, res) => {
     const keys = Object.keys(process.env);
-    const dbVars = keys.filter(k => k.startsWith('DB_') || k === 'DATABASE_URL' || k === 'SECRET_KEY');
     res.json({
-        message: "Environment variable detection check (keys only)",
-        detected: dbVars,
+        message: "Full environment variable key check (keys only)",
+        all_keys: keys,
         node_env: process.env.NODE_ENV,
         timestamp: new Date().toISOString()
     });
