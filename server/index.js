@@ -8,20 +8,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-import fs from 'fs';
-const log = (msg) => fs.appendFileSync('server_log.txt', msg + '\n');
 
 process.on('uncaughtException', (err) => {
-    log('Uncaught Exception: ' + err.stack);
     console.error('Uncaught Exception:', err);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-    log('Unhandled Rejection: ' + reason);
     console.error('Unhandled Rejection:', reason);
 });
 
-log("Starting server...");
+console.log("Starting server...");
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -125,7 +121,7 @@ export default app;
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
-        log(`Server running on http://localhost:${PORT}`);
+        console.log(`Server running on http://localhost:${PORT}`);
     });
 }
 
