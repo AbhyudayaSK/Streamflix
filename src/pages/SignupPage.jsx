@@ -23,7 +23,8 @@ const SignupPage = () => {
             await axios.post('/api/auth/signup', formData);
             navigate('/login');
         } catch (err) {
-            setError(err.response?.data?.error || 'Signup failed. Please try again.');
+            console.error('Signup Error Detail:', err);
+            setError(err.response?.data?.error || 'Signup failed. Please check if the backend server is running on port 5001.');
         }
     };
 

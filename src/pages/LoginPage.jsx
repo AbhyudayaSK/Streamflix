@@ -23,7 +23,8 @@ const LoginPage = () => {
 
             navigate('/browse');
         } catch (err) {
-            setError(err.response?.data?.error || 'Login failed. Please try again.');
+            console.error('Login Error Detail:', err);
+            setError(err.response?.data?.error || 'Login failed. Please check if the backend server is running on port 5001.');
         }
     };
 

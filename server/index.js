@@ -11,6 +11,16 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import fs from 'fs';
 const log = (msg) => fs.appendFileSync('server_log.txt', msg + '\n');
 
+process.on('uncaughtException', (err) => {
+    log('Uncaught Exception: ' + err.stack);
+    console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    log('Unhandled Rejection: ' + reason);
+    console.error('Unhandled Rejection:', reason);
+});
+
 log("Starting server...");
 
 const app = express();

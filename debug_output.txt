@@ -1,9 +1,0 @@
-Status Code: 201
-Response Body: {
-  "message": "User created successfully",
-  "user": {
-    "id": 1,
-    "name": "Debug User",
-    "email": "debug_1771484259056@test.com"
-  }
-}
