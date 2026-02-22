@@ -49,7 +49,7 @@ const LoginPage = () => {
             <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-blue-900/20 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="z-10 w-full max-w-md p-8 md:p-12 mx-4 bg-white/5 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10">
-                <h1 className="text-4xl font-light mb-8 text-white tracking-wide text-center">Welcome Back</h1>
+                <h1 className="text-4xl font-light mb-8 text-white tracking-wide text-center">Welcome Back (V6)</h1>
 
                 {error && <p className="text-red-400 text-sm mb-6 bg-red-900/20 p-3 rounded border border-red-500/20 text-center">{error}</p>}
 

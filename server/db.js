@@ -4,12 +4,16 @@ const { Pool } = pg;
 
 
 
-const getPoolConfig = () => {
+let pool = null;
+
+const createPool = () => {
+    if (pool) return pool;
+
+    let poolConfig = null;
     if (process.env.DATABASE_URL) {
-        return { connectionString: process.env.DATABASE_URL };
-    }
-    if (process.env.DB_HOST) {
-        return {
+        poolConfig = { connectionString: process.env.DATABASE_URL };
+    } else if (process.env.DB_HOST) {
+        poolConfig = {
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             host: process.env.DB_HOST,
@@ -17,27 +21,28 @@ const getPoolConfig = () => {
             database: process.env.DB_NAME,
         };
     }
-    return null;
-};
 
-const poolConfig = getPoolConfig();
-let pool = null;
+    if (!poolConfig) {
+        console.error("DATABASE ERROR: No connection parameters found in process.env");
+        return null;
+    }
 
-if (poolConfig) {
     pool = new Pool({
         ...poolConfig,
         ssl: {
             rejectUnauthorized: false
         }
     });
-}
+    return pool;
+};
 
 export default {
     query: (text, params) => {
-        if (!pool) {
-            console.error("CRITICAL ERROR: No database connection parameters found.");
+        const activePool = createPool();
+        if (!activePool) {
+            console.error("CRITICAL ERROR: Database configuration missing in environment variables.");
             throw new Error("Database configuration missing in environment variables. Please check Vercel settings.");
         }
-        return pool.query(text, params);
+        return activePool.query(text, params);
     },
 };
