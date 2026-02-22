@@ -24,7 +24,17 @@ const LoginPage = () => {
             navigate('/browse');
         } catch (err) {
             console.error('Login Error Detail:', err);
-            setError(err.response?.data?.error || 'Login failed. Please check if the backend server is running on port 5001.');
+
+            if (!err.response) {
+                // Network error or no response from server
+                setError('Network error: Unable to connect to the backend. Please check your internet connection and verify if the Vercel API is correctly configured.');
+            } else if (err.response.status === 404) {
+                setError('Error 404: The login API endpoint was not found. Please check your Vercel rewrites configuration.');
+            } else if (err.response.status === 500) {
+                setError('Server Error (500): The backend encountered an error. Please check your Vercel logs and environment variables (DATABASE_URL).');
+            } else {
+                setError(err.response?.data?.error || 'Login failed. Please check your credentials.');
+            }
         }
     };
 
