@@ -25,7 +25,7 @@ log("Starting server...");
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const SECRET_KEY = "supersecretkey"; // In production, use process.env.SECRET_KEY
+const SECRET_KEY = process.env.SECRET_KEY || "supersecretkey";
 
 app.use(cors());
 app.use(express.json());
@@ -44,10 +44,8 @@ const initDb = async () => {
             );
         `);
         console.log("Database initialized: 'users' table ready.");
-        log("Database initialized: 'users' table ready.");
     } catch (err) {
-        console.error("Error initializing database:", err);
-        log("Error initializing database: " + err);
+        console.error("Database Init Error:", err.message);
     }
 };
 
@@ -64,17 +62,14 @@ app.post('/api/auth/signup', async (req, res) => {
     }
 
     try {
-        // Check if user exists
         const userCheck = await db.query("SELECT * FROM users WHERE email = $1", [email]);
         if (userCheck.rows.length > 0) {
             return res.status(409).json({ error: "User already exists." });
         }
 
-        // Hash password
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(password, salt);
 
-        // Insert user
         const newUser = await db.query(
             "INSERT INTO users (name, email, phone, password_hash) VALUES ($1, $2, $3, $4) RETURNING id, name, email",
             [name, email, phone, hash]
@@ -83,7 +78,10 @@ app.post('/api/auth/signup', async (req, res) => {
         res.status(201).json({ message: "User created successfully", user: newUser.rows[0] });
     } catch (err) {
         console.error("Signup Error:", err);
-        res.status(500).json({ error: "Server error: " + err.message });
+        res.status(500).json({
+            error: "Database error during signup",
+            details: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 });
 
@@ -113,8 +111,11 @@ app.post('/api/auth/login', async (req, res) => {
 
         res.json({ message: "Login successful", token, user: { id: user.id, name: user.name, email: user.email } });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Server error during login" });
+        console.error("Login Error:", err);
+        res.status(500).json({
+            error: "Database error during login",
+            details: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 });
 
